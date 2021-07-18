@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="none" />
+
+    <EditText
+        android:id="@+id/edtBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:ems="10"
+        android:hint="Body"
+        android:inputType="none" />
+
+    <ImageView
+        android:id="@+id/imgNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        app:srcCompat="@drawable/notification_image" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <RadioButton
+            android:id="@+id/rbBasic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Basic Notification" />
+
+        <RadioButton
+            android:id="@+id/rbSmallImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification with Small Image" />
+
+        <RadioButton
+            android:id="@+id/rbBigImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification wtih Big Image" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Post Notification" />
+</LinearLayout>
