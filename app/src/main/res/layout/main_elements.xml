@@ -30,6 +30,15 @@
         android:layout_margin="5dp"
         app:srcCompat="@drawable/notification_image" />
 
+    <Switch
+        android:id="@+id/switch_callback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="Set Notification Callback" />
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"

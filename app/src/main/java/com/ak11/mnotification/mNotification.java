@@ -3,6 +3,7 @@ package com.ak11.mnotification;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -21,12 +22,14 @@ public class mNotification extends ContextWrapper {
     private NotificationManager notificationManager;
     private static final String CHANNEL_ID = "DEFAULT";
     private static final String CHANNEL_NAME = "Default";
+    private boolean isCallable;
     Notification.Builder notification;
 
     public mNotification(Context base) {
         super(base);
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotificationChannel = null;
+        isCallable = false;
     }
 
     private void createNotificationChannel(String channelID, String channelName){
@@ -53,8 +56,11 @@ public class mNotification extends ContextWrapper {
         notification.setContentTitle(title)
                     .setContentText(body)
                     .setSmallIcon(R.drawable.notification_icon)
-                    .setAutoCancel(true)
-                    .setColor(Color.RED);
+                    .setAutoCancel(true);
+
+        if(isCallable){
+            notification.setContentIntent(getAction());
+        }
 
         return notification;
 
@@ -104,7 +110,15 @@ public class mNotification extends ContextWrapper {
 
     }
 
+    public void setCallable(boolean flag){
+        isCallable = flag;
+    }
 
 
-
+    public PendingIntent getAction() {
+        Intent intent = new Intent(this, notification_open_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        return  pendingIntent;
+    }
 }
